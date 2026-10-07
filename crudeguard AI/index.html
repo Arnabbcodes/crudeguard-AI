@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrudeGuard AI | Crude Oil Supply Risk &amp; Sourcing Intelligence</title>
+  <meta name="description" content="AI-powered crude oil supply risk and sourcing intelligence platform for refineries, oil importers, and energy trading desks.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <span>CrudeGuard</span>
+        <span class="brand-badge">AI Intelligence</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a href="suppliers.html">Suppliers</a></li>
+          <li class="nav-item"><a href="events.html">Events Intel</a></li>
+          <li class="nav-item"><a href="simulator.html">Simulator</a></li>
+          <li class="nav-item"><a href="optimization.html">Optimization</a></li>
+          <li class="nav-item"><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" id="db-status-pill">
+          <span class="status-dot"></span>
+          <span>System Online</span>
+        </div>
+        <a href="dashboard.html" class="btn btn-sm btn-primary">Launch Console →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="main-content">
+    <section style="padding: 3.5rem 0 2.5rem; text-align: center; max-width: 960px; margin: 0 auto;">
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: var(--radius-full); margin-bottom: 1.5rem;">
+        <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ Next-Gen Energy Risk Architecture</span>
+      </div>
+      
+      <h1 style="font-size: 3.2rem; line-height: 1.15; margin-bottom: 1.25rem; font-weight: 800;">
+        If something goes wrong with your crude supply, <span style="background: linear-gradient(135deg, #00E5FF, #8338EC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">know the impact &amp; exact actions in seconds.</span>
+      </h1>
+
+      <p style="font-size: 1.15rem; color: #94A3B8; line-height: 1.6; margin-bottom: 2.25rem; max-width: 780px; margin-left: auto; margin-right: auto;">
+        CrudeGuard AI is an integrated risk intelligence and automated sourcing optimization platform built for energy analysts, refinery managers, and trading operations navigating volatile geopolitical choke points and supply disruptions.
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="dashboard.html" class="btn btn-lg btn-primary" id="hero-btn-dashboard">
+          <span>Open Live Command Center</span>
+          <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="simulator.html" class="btn btn-lg btn-secondary" id="hero-btn-simulator">Simulate Supply Shock</a>
+      </div>
+    </section>
+
+    <!-- Architecture & Core Workflow -->
+    <section style="margin: 3.5rem 0;">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <h2>The 5-Tier Energy Defense Hierarchy</h2>
+        <p>Continuous intelligence pipeline from satellite chokepoints to refinery CDU scheduling.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.75rem;">🛰️</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.15rem;">1. Monitor</h3>
+          <p style="font-size: 0.88rem; line-height: 1.5;">
+            Real-time tracking of global crude flows, maritime chokepoints (Hormuz, Bab-el-Mandeb, Suez), export terminals, and supplier risk indices.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.75rem;">💥</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.15rem;">2. Simulate</h3>
+          <p style="font-size: 0.88rem; line-height: 1.5;">
+            Dynamic stress-testing of disruptions, vessel blockades, and force majeure events. Instantly compute daily barrel deficits and reserve depletion timelines.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.75rem;">📐</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.15rem;">3. Optimize</h3>
+          <p style="font-size: 0.88rem; line-height: 1.5;">
+            Multi-criteria reallocation algorithms solving for landed cost, API gravity/sulfur diet balance, and chokepoint elimination.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.75rem;">🤖</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.15rem;">4. Explain (Groq AI)</h3>
+          <p style="font-size: 0.88rem; line-height: 1.5;">
+            Executive intelligence synthesis powered by Groq Llama-3.3-70b, providing authoritative rationale and 72-hour operational directives.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.75rem;">📑</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.15rem;">5. Report</h3>
+          <p style="font-size: 0.88rem; line-height: 1.5;">
+            Ready-to-export executive dossiers for C-suite briefings, risk committees, and spot chartering desks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Architecture Diagram -->
+    <section class="card" style="padding: 2.5rem; margin-bottom: 3.5rem;">
+      <h2 style="margin-bottom: 1rem; font-size: 1.45rem;">Verified Cloud Architecture</h2>
+      <p style="margin-bottom: 2rem;">Built strictly with modern serverless primitives for maximum speed and rock-solid reliability.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: center;">
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
+          <div class="badge badge-info" style="margin-bottom: 0.75rem;">Client Tier</div>
+          <h4 style="margin-bottom: 0.5rem;">Vanilla ES Modules + HTML/CSS</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Zero bloated JS frameworks. Chart.js &amp; Leaflet.js provide hardware-accelerated spatial &amp; quantitative analytics.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
+          <div class="badge badge-info" style="margin-bottom: 0.75rem;">Data Tier</div>
+          <h4 style="margin-bottom: 0.5rem;">Supabase PostgreSQL</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">High-performance relational persistence with Row Level Security (RLS) for suppliers, events, simulations, and audit trails.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
+          <div class="badge badge-info" style="margin-bottom: 0.75rem;">AI Compute Tier</div>
+          <h4 style="margin-bottom: 0.5rem;">Supabase Edge Functions + Groq API</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Sub-second LLM reasoning via Groq LPU inference delivering real-time event intelligence and executive briefings.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>CrudeGuard AI</strong> &copy; 2026. Built for Energy Security &amp; Refinery Supply Chain Resilience.
+    </div>
+    <div class="footer-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="suppliers.html">Suppliers</a>
+      <a href="simulator.html">Simulator</a>
+      <a href="optimization.html">Optimization</a>
+      <a href="reports.html">Reports</a>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { setupNavigation } from './js/utils.js';
+    setupNavigation();
+  </script>
+</body>
+</html>

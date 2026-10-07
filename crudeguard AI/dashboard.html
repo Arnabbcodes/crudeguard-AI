@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | CrudeGuard AI - Supply Risk Command Center</title>
+  <meta name="description" content="CrudeGuard AI Executive Risk Dashboard - Real-time crude flow monitoring, maritime threat zones, and supply alerts.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <span>CrudeGuard</span>
+        <span class="brand-badge">AI Intelligence</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item active"><a href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a href="suppliers.html">Suppliers</a></li>
+          <li class="nav-item"><a href="events.html">Events Intel</a></li>
+          <li class="nav-item"><a href="simulator.html">Simulator</a></li>
+          <li class="nav-item"><a href="optimization.html">Optimization</a></li>
+          <li class="nav-item"><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="refinery-badge" title="Active Operating Refinery">
+          <svg style="width: 14px; height: 14px; color: var(--accent-cyan);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M13 11l6-3v13"/></svg>
+          <span>Rotterdam Gateway (420k bpd)</span>
+        </div>
+        <div class="status-pill" id="db-status-pill">
+          <span class="status-dot"></span>
+          <span>Checking DB...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-header">
+      <div class="page-title-group">
+        <h1>Global Crude Risk &amp; Sourcing Command Center</h1>
+        <p>Continuous monitoring of contracted crude flows, maritime bottleneck vulnerabilities, and active geopolitical events.</p>
+      </div>
+      <div class="page-actions">
+        <a href="simulator.html" class="btn btn-primary" id="btn-quick-simulate">
+          <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Run Shock Simulation
+        </a>
+      </div>
+    </div>
+
+    <!-- 4 Key Metrics -->
+    <section class="kpi-grid">
+      <div class="card kpi-card" id="card-total-bpd">
+        <div class="kpi-header">
+          <span>Total Contracted Intake</span>
+          <div class="kpi-icon">
+            <svg style="width: 16px; height: 16px; color: var(--accent-cyan);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-total-bpd">395,000</div>
+        <div class="kpi-subtext positive">
+          <span>bpd across 8 global counterparties</span>
+        </div>
+      </div>
+
+      <div class="card kpi-card warning" id="card-avg-risk">
+        <div class="kpi-header">
+          <span>Average Portfolio Risk</span>
+          <div class="kpi-icon">
+            <svg style="width: 16px; height: 16px; color: var(--accent-amber);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-avg-risk">52/100</div>
+        <div class="kpi-subtext warning">
+          <span>Elevated chokepoint sensitivity</span>
+        </div>
+      </div>
+
+      <div class="card kpi-card critical" id="card-exposed-bpd">
+        <div class="kpi-header">
+          <span>Chokepoint Exposed Intake</span>
+          <div class="kpi-icon">
+            <svg style="width: 16px; height: 16px; color: var(--accent-crimson);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-exposed-bpd">170,000</div>
+        <div class="kpi-subtext negative" id="kpi-exposed-sub">
+          <span>43% of daily intake via Strait of Hormuz</span>
+        </div>
+      </div>
+
+      <div class="card kpi-card" id="card-active-alerts">
+        <div class="kpi-header">
+          <span>Active Threat Advisories</span>
+          <div class="kpi-icon">
+            <svg style="width: 16px; height: 16px; color: var(--accent-cyan);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+        </div>
+        <div class="kpi-value" id="kpi-active-alerts">4</div>
+        <div class="kpi-subtext">
+          <span>2 Critical, 1 High severity</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map & Threat Intelligence Feed -->
+    <section class="dashboard-grid">
+      <!-- Interactive Leaflet Map -->
+      <div class="card map-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">
+              <svg style="width: 18px; height: 18px; color: var(--accent-cyan);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+              Global Maritime Flow &amp; Chokepoint Map
+            </h3>
+            <span class="card-subtitle">Live vessel routes, origin export terminals, and active naval threat corridors</span>
+          </div>
+          <div style="font-size: 0.76rem; color: var(--text-muted);">
+            Destination: <b style="color: #fff;">Rotterdam Complex</b>
+          </div>
+        </div>
+
+        <div class="map-container" id="dashboard-map">
+          <!-- Leaflet Map attaches here -->
+          <div class="map-legend">
+            <div class="map-legend-item">
+              <span class="legend-dot" style="background: var(--accent-cyan); box-shadow: 0 0 8px #00E5FF;"></span>
+              <span>Refinery Destination</span>
+            </div>
+            <div class="map-legend-item">
+              <span class="legend-dot" style="background: var(--risk-critical);"></span>
+              <span>Critical Risk Route</span>
+            </div>
+            <div class="map-legend-item">
+              <span class="legend-dot" style="background: var(--risk-low);"></span>
+              <span>Secure Route</span>
+            </div>
+            <div class="map-legend-item">
+              <span class="legend-dot" style="background: var(--risk-critical); border-radius: 2px;"></span>
+              <span>Naval Danger Zone</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-time Disruption Alerts Feed -->
+      <div class="card alerts-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">
+              <svg style="width: 18px; height: 18px; color: var(--accent-amber);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Live Event Intelligence
+            </h3>
+            <span class="card-subtitle">Real-time alerts affecting maritime corridors</span>
+          </div>
+          <a href="events.html" class="btn btn-sm btn-outline">Analyze Events →</a>
+        </div>
+
+        <div class="alerts-list" id="dashboard-alerts-list">
+          <!-- Dynamic alerts inserted via js/dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Analytics: Risk Radar & Supplier Exposure Breakdown -->
+    <section class="dashboard-bottom-grid">
+      <!-- Radar Chart: Multi-Factor Risk Assessment -->
+      <div class="card chart-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Multi-Factor Portfolio Risk Radar</h3>
+            <span class="card-subtitle">Aggregate exposure vs maximum operational threshold</span>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="risk-radar-chart"></canvas>
+        </div>
+      </div>
+
+      <!-- Supplier Exposure List -->
+      <div class="card chart-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Active Supplier Intake Exposure</h3>
+            <span class="card-subtitle">Daily barrel share and individual composite risk index</span>
+          </div>
+          <a href="suppliers.html" class="btn btn-sm btn-outline">All Suppliers</a>
+        </div>
+        <div style="flex: 1; overflow-y: auto; padding-right: 0.5rem;" id="supplier-exposure-list">
+          <!-- Dynamic supplier exposure inserted via js/dashboard.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>CrudeGuard AI</strong> &copy; 2026. Built for Energy Security &amp; Refinery Supply Chain Resilience.
+    </div>
+    <div class="footer-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="suppliers.html">Suppliers</a>
+      <a href="simulator.html">Simulator</a>
+      <a href="optimization.html">Optimization</a>
+      <a href="reports.html">Reports</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

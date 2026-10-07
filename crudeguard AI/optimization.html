@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sourcing Optimization | CrudeGuard AI - AI Strategy Engine</title>
+  <meta name="description" content="AI-optimized alternative crude sourcing strategies, Pareto trade-offs, and Groq-powered executive briefings.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/simulator.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <span>CrudeGuard</span>
+        <span class="brand-badge">AI Intelligence</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a href="suppliers.html">Suppliers</a></li>
+          <li class="nav-item"><a href="events.html">Events Intel</a></li>
+          <li class="nav-item"><a href="simulator.html">Simulator</a></li>
+          <li class="nav-item active"><a href="optimization.html">Optimization</a></li>
+          <li class="nav-item"><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" id="db-status-pill">
+          <span class="status-dot"></span>
+          <span>Optimizer Ready</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-header">
+      <div class="page-title-group">
+        <h1>Alternative Crude Sourcing Optimization</h1>
+        <p id="opt-deficit-summary">Calculating optimal replacement allocations...</p>
+      </div>
+      <div class="page-actions">
+        <button id="btn-proceed-reports" class="btn btn-primary">
+          <span>Generate Executive Dossier →</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Strategy Selection Grid (3 Options) -->
+    <div class="strategies-grid" id="strategies-container">
+      <!-- Strategy Cards populated via js/optimization.js -->
+    </div>
+
+    <!-- Strategy Reallocation Schedule & Visual Comparison -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+      <!-- Table: Reallocation Schedule -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Selected Sourcing Reallocation Schedule</h3>
+            <span class="card-subtitle">Incremental barrel nominations, landed costs, and logistics transit lead time</span>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Replacement Source</th>
+                <th>Additional Volume</th>
+                <th>Landed Unit Cost</th>
+                <th>Daily Surcharge</th>
+                <th>Transit</th>
+                <th>Risk Profile</th>
+              </tr>
+            </thead>
+            <tbody id="reallocations-table-body">
+              <!-- Reallocations inserted via js/optimization.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Chart: Post-Reallocation Throughput -->
+      <div class="card" style="display: flex; flex-direction: column;">
+        <div class="card-header">
+          <h3 class="card-title">Deficit Recovery Balance</h3>
+        </div>
+        <div style="flex: 1; position: relative; min-height: 260px; height: 260px;">
+          <canvas id="opt-comparison-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Groq AI Executive Briefing Container -->
+    <section class="ai-explanation-box">
+      <div class="ai-explanation-header">
+        <span class="ai-badge">🤖 Groq Llama-3.3-70b Intelligence Briefing</span>
+        <button id="btn-regen-ai" class="btn btn-sm btn-outline" style="margin-left: auto;">
+          ↺ Refresh Synthesis
+        </button>
+      </div>
+      <div id="ai-explanation-content" class="ai-explanation-content">
+        <!-- AI Markdown briefing formatted via js/optimization.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>CrudeGuard AI</strong> &copy; 2026. Built for Energy Security &amp; Refinery Supply Chain Resilience.
+    </div>
+    <div class="footer-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="suppliers.html">Suppliers</a>
+      <a href="simulator.html">Simulator</a>
+      <a href="optimization.html">Optimization</a>
+      <a href="reports.html">Reports</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script type="module" src="js/optimization.js"></script>
+</body>
+</html>

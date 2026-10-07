@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suppliers Directory | CrudeGuard AI - Counterparty Risk</title>
+  <meta name="description" content="Comprehensive crude oil suppliers directory, risk scores, crude assay grades, and logistics vulnerabilities.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/suppliers.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <span>CrudeGuard</span>
+        <span class="brand-badge">AI Intelligence</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item active"><a href="suppliers.html">Suppliers</a></li>
+          <li class="nav-item"><a href="events.html">Events Intel</a></li>
+          <li class="nav-item"><a href="simulator.html">Simulator</a></li>
+          <li class="nav-item"><a href="optimization.html">Optimization</a></li>
+          <li class="nav-item"><a href="reports.html">Reports</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" id="db-status-pill">
+          <span class="status-dot"></span>
+          <span>System Online</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-header">
+      <div class="page-title-group">
+        <h1>Global Crude Suppliers &amp; Assay Intelligence</h1>
+        <p>Monitor contracted crude grades, sulfur/API diet compatibility, transit times, and multi-factor geopolitical vulnerability.</p>
+      </div>
+      <div class="page-actions">
+        <span id="supplier-count" class="badge badge-info" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;">Loading suppliers...</span>
+      </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <section class="filter-bar">
+      <div class="filter-controls">
+        <div class="search-input-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="supplier-search" class="form-control" placeholder="Search supplier, crude grade, origin...">
+        </div>
+
+        <select id="region-filter" class="form-select" style="max-width: 170px;">
+          <option value="all">All Regions</option>
+          <option value="Middle East">Middle East</option>
+          <option value="North Sea">North Sea</option>
+          <option value="Latin America">Latin America</option>
+          <option value="West Africa">West Africa</option>
+          <option value="North America">North America</option>
+        </select>
+
+        <select id="risk-filter" class="form-select" style="max-width: 160px;">
+          <option value="all">All Risk Levels</option>
+          <option value="Critical">Critical Only</option>
+          <option value="High">High Risk</option>
+          <option value="Medium">Medium Risk</option>
+          <option value="Low">Low Risk</option>
+        </select>
+
+        <select id="sort-filter" class="form-select" style="max-width: 180px;">
+          <option value="risk-desc">Sort: Highest Risk</option>
+          <option value="risk-asc">Sort: Lowest Risk</option>
+          <option value="volume-desc">Sort: Highest Volume</option>
+          <option value="cost-asc">Sort: Lowest Cost</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Suppliers Grid -->
+    <section class="suppliers-grid" id="suppliers-grid">
+      <!-- Dynamically rendered via js/suppliers.js -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>CrudeGuard AI</strong> &copy; 2026. Built for Energy Security &amp; Refinery Supply Chain Resilience.
+    </div>
+    <div class="footer-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="suppliers.html">Suppliers</a>
+      <a href="simulator.html">Simulator</a>
+      <a href="optimization.html">Optimization</a>
+      <a href="reports.html">Reports</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="js/suppliers.js"></script>
+</body>
+</html>
